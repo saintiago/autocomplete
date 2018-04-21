@@ -1,0 +1,81 @@
+*
+{
+    padding: 0;
+    margin: 0;
+    font-family: Courier, monospace;
+}
+
+.container
+{
+    margin: 5% auto 0;
+    max-width: 600px;
+    min-width: 360px;
+    width: 90%;
+}
+
+h1
+{
+    font-size: 52px;
+}
+
+h2
+{
+    font-size: 42px;
+    margin-top: 10px;
+}
+
+.input_field_wrapper
+{
+    position: relative;
+}
+
+.input_field
+{
+    font-size: 36px;
+}
+
+.suggestions_list
+{
+    position: absolute;
+    top: 100%;
+    font-size: 24px;
+    list-style: none;
+    background-color: #fff;
+    box-shadow: 12px 12px 2px 1px #320318;
+}
+
+.database
+{
+    resize: none;
+    min-height: 200px;
+    font-size: 24px;
+}
+
+.update_database_button
+{
+    font-size: 24px;
+    cursor: pointer;
+    background-color: #d3ffd8;
+}
+
+.database,
+.suggestions_list,
+.input_field,
+.update_database_button
+{
+    box-sizing: border-box;
+    margin-top: 10px;
+    padding: 10px;
+    border: 2px solid #ccc;
+    width: 100%;
+    border-radius: 6px;
+    outline: none;
+}
+
+.suggestions_list li:hover,
+.suggestions_list li:active,
+.hover
+{
+    background-color: #eeeeee;
+    cursor: pointer;
+}
