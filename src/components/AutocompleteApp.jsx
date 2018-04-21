@@ -1,5 +1,3 @@
 import React from 'react'
 
-export function AutocompleteApp() {
-  return <h1>Hello</h1>
-}
+export default () => <input id="autocomplete" type="text" value="" />;

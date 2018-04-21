@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { AutocompleteApp } from './components/AutocompleteApp'
+import AutocompleteApp from './components/AutocompleteApp'
 
 
 const root = document.createElement('div');
