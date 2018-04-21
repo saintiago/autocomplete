@@ -12,8 +12,9 @@ export default function(database) {
    * @returns {{data: Object, error: ?Error}}
    */
   this.processRequest = function (request) {
+    const input = request.body.input;
     return isRequestValid(request) ? {
-      data: database.filter(entry => ~entry.indexOf(request.body.input)),
+      data: database.filter(entry => input && ~entry.indexOf(input)),
       error: null
     } : {
       data: null,

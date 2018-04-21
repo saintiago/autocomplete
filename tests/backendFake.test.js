@@ -22,6 +22,23 @@ describe('Fake backend', () => {
     expect(backend.processRequest(fakeRequest)).toEqual(expectedResponse);
   });
 
+  it('returns empty suggestions list for empty input', () => {
+    const fakeRequest = {
+      method: 'POST',
+      url: 'https://give.me.suggestions.please',
+      body: {
+        input: ''
+      }
+    };
+
+    const expectedResponse = {
+      data: [],
+      error: null
+    };
+
+    expect(backend.processRequest(fakeRequest)).toEqual(expectedResponse);
+  });
+
   it('throws error if request invalid', () => {
     const fakeRequest1 = {
       method: 'GET',
