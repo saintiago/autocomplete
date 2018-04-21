@@ -1,4 +1,4 @@
-const Backend = require('../src/helpers/backendFake').default;
+const Backend = require('../src/helpers/Backend').default;
 
 const fakeDB = ['cat', 'dog', 'apple', 'google', 'application'];
 const backend = new Backend(fakeDB);

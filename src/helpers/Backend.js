@@ -21,12 +21,12 @@ export default function(database) {
       error: new Error('Invalid request')
     }
   };
-
-  function isRequestValid(request) {
-    return request &&
-           request.method &&
-           request.method === 'POST' &&
-           request.url &&
-           request.url === 'https://give.me.suggestions.please';
-  }
 };
+
+function isRequestValid(request) {
+  return request &&
+    request.method &&
+    request.method === 'POST' &&
+    request.url &&
+    request.url === 'https://give.me.suggestions.please';
+}
