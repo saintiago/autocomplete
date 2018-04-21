@@ -11,7 +11,7 @@ export default function (request) {
     } else {
       console.log('Requesting suggestions for "' + input + '" from backend.');
       const suggestionsPromise = request(config.suggestions_request.METHOD, config.suggestions_request.URL, {input});
-      suggestionsPromise.then(suggestions => { cache[input] = suggestions });
+      suggestionsPromise.then(suggestions => { cache[input] = suggestions }, error => {});
       return suggestionsPromise;
     }
   }

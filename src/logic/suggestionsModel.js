@@ -14,7 +14,7 @@ export default (function () {
   }
 
   function replaceDatabase(db) {
-    if (typeof db === 'string') {
+    if (typeof db === 'string' && db.length > 0) {
       const database = db.split(',').map(item => item.trim()).filter(item => item !== '');
       const {getDatabase, requestSuggestions} = initRequestSuggestions(database);
       suggestionsModel.getDatabase = getDatabase;

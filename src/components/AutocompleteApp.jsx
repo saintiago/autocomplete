@@ -2,6 +2,7 @@ import React from 'react'
 import suggestionsModel from '../logic/suggestionsModel'
 import SuggestionsList from './SuggestionsList'
 import Database from './Database.jsx'
+import Error from './Error'
 
 export default class AutocompleteApp extends React.Component {
 
@@ -52,8 +53,11 @@ export default class AutocompleteApp extends React.Component {
           this.setState({hoverOn: hoverOn + 1});
         }
         break;
+      case 27: // esc
+        e.preventDefault();
+        this.hideSuggestions()
+        break;
       case 13: // enter
-      case 9: // tab
         e.preventDefault();
         this.selectItem(hoverOn);
         break;
@@ -61,11 +65,13 @@ export default class AutocompleteApp extends React.Component {
   }
 
   selectItem(index) {
-    this.setState({
-      currentInput: this.state.suggestions[index],
-      suggestions: [],
-      hoverOn: 0
-    })
+    if (typeof this.state.suggestions[index] === 'string') {
+      this.setState({
+        currentInput: this.state.suggestions[index],
+        suggestions: [],
+        hoverOn: 0
+      })
+    }
   }
 
   changeHover(index) {
@@ -76,15 +82,29 @@ export default class AutocompleteApp extends React.Component {
     suggestionsModel.setDatabase(db);
   }
 
+  hideError() {
+    this.setState({error: null});
+  }
+
+  hideSuggestions() {
+    this.setState({
+      suggestions: [],
+      hoverOn: 0
+    })
+  }
+
   render () {
     return (
       <div className="container">
         <h1>Autocomplete field</h1>
         <div className="input_field_wrapper">
           <input
+            tabIndex="1"
             className="input_field"
             onKeyDown={(e) => {this.handleKeyDown(e)}}
             onInput={(e) => {this.handleInput(e)}}
+            onFocus={(e) => {this.handleInput(e)}}
+            onBlur={(e) => {this.hideSuggestions()}}
             type="text"
             value={this.state.currentInput}
             placeholder="Start typing"
@@ -101,6 +121,11 @@ export default class AutocompleteApp extends React.Component {
         }
         </div>
         <Database updateDb={this.updateDb.bind(this)} content={this.state.database} />
+        {
+          this.state.error != null ?
+            <Error errorText={this.state.error.message} hideError={this.hideError.bind(this)} />
+          : ''
+        }
       </div>
     );
   }
