@@ -4,12 +4,16 @@ const HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plug
 
 module.exports = {
 
-  mode: 'development',
+  mode: 'production',
 
-  entry: ['./src/index.jsx'],
+  entry: {
+    react: './src/indexReact.jsx',
+    vanilla: './src/indexVanilla.js',
+  },
+
   output: {
     path: path.resolve(__dirname, 'web'),
-    filename: 'index.js'
+    filename: '[name].js'
   },
 
   devtool: 'cheap-module-source-map',
@@ -36,7 +40,15 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Autocomplete',
+      title: 'Autocomplete React',
+      chunks: ['react'],
+      filename: 'index_react.html',
+      inject: true
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Autocomplete Vanilla',
+      chunks: ['vanilla'],
+      filename: 'index_vanilla.html',
       inject: true
     }),
     new HtmlWebpackIncludeAssetsPlugin({

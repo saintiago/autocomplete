@@ -55,7 +55,7 @@ export default class AutocompleteApp extends React.Component {
         break;
       case 27: // esc
         e.preventDefault();
-        this.hideSuggestions()
+        this.hideSuggestions();
         break;
       case 13: // enter
         e.preventDefault();
@@ -93,10 +93,16 @@ export default class AutocompleteApp extends React.Component {
     })
   }
 
+  handleBlur(e) {
+    if (!e.target.parentNode.classList.contains('input_field_wrapper')) {
+      this.hideSuggestions();
+    }
+  }
+
   render () {
     return (
       <div className="container">
-        <h1>Autocomplete field</h1>
+        <h1>Autocomplete React</h1>
         <div className="input_field_wrapper">
           <input
             tabIndex="1"
@@ -104,7 +110,7 @@ export default class AutocompleteApp extends React.Component {
             onKeyDown={(e) => {this.handleKeyDown(e)}}
             onInput={(e) => {this.handleInput(e)}}
             onFocus={(e) => {this.handleInput(e)}}
-            onBlur={(e) => {this.hideSuggestions()}}
+            onBlur={(e) => {this.handleBlur(e)}}
             type="text"
             value={this.state.currentInput}
             placeholder="Start typing"
