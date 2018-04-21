@@ -6,9 +6,12 @@ import config from '../config/config'
  */
 
 /**
- * @param {String[]} database
+ * @param {String[]} db
  */
-export default function(database) {
+export default function(db) {
+
+  let database = db;
+
   /**
    * @param {{url: String, method: String, body: RequestSchema}} request
    * @returns {{data: Object, error: ?Error}}
@@ -22,6 +25,11 @@ export default function(database) {
       data: null,
       error: new Error('Invalid request')
     }
+  };
+
+  /** @return {String} */
+  this.getDatabase = function () {
+    return database.join(', ');
   };
 };
 

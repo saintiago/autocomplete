@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin');
 
 module.exports = {
 
@@ -36,8 +37,11 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Autocomplete',
-      inject: true,
-      inlineSource: '.(js)$' // embed all javascript and css inline
+      inject: true
+    }),
+    new HtmlWebpackIncludeAssetsPlugin({
+      assets: ['css/styles.css'],
+      append: true
     })
   ],
 
