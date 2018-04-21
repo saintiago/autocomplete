@@ -1,3 +1,5 @@
+import config from '../config/config'
+
 /**
  * @typedef {Object} RequestSchema
  * @property {String} input
@@ -26,7 +28,9 @@ export default function(database) {
 function isRequestValid(request) {
   return request &&
     request.method &&
-    request.method === 'POST' &&
+    request.method === config.suggestions_request.METHOD &&
     request.url &&
-    request.url === 'https://give.me.suggestions.please';
+    request.url === config.suggestions_request.URL &&
+    request.body &&
+    typeof request.body.input === 'string';
 }
