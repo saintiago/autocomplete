@@ -102,3 +102,15 @@ h2
     background-color: #eeeeee;
     cursor: pointer;
 }
+
+.index_links
+{
+    list-style: none;
+    margin-top: 20px;
+}
+
+.back_link
+{
+    display: block;
+    margin-top: 20px;
+}
