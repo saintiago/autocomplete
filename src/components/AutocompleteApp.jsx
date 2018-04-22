@@ -126,7 +126,7 @@ export default class AutocompleteApp extends React.Component {
             <Error errorText={this.state.error.message} hideError={this.hideError.bind(this)} />
           : ''
         }
-        <a className="back_link" href="/" title="Back to index page">Back to index page</a>
+        <a className="back_link" href="/autocomplete" title="Back to index page">Back to index page</a>
       </div>
     );
   }

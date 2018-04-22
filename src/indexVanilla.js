@@ -36,7 +36,7 @@ function getLayout() {
     '    <button tabindex="3" class="update_database_button" id="updateDatabaseButton">Update database</button>' +
     '  </div>' +
     '  <div class="error" id="error"></div>' +
-    '  <a class="back_link" href="/" title="Back to index page">Back to index page</a>' +
+    '  <a class="back_link" href="/autocomplete" title="Back to index page">Back to index page</a>' +
     '</div>';
 }
 
