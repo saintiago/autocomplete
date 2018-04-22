@@ -10,11 +10,7 @@ window.onload = function () {
   input.addEventListener('focus', (e) => inputHandler(e));
   const handleKeyDown = createKeydownHandler();
   input.addEventListener('keydown', (e) => handleKeyDown(e));
-  input.addEventListener('blur', (e) => {
-    if (!e.target.parentNode.classList.contains('input_field_wrapper')) {
-      hideSuggestions();
-    }
-  });
+  input.addEventListener('blur', hideSuggestions);
 
   const error = document.getElementById('error');
   error.style.display = 'none';
@@ -40,6 +36,7 @@ function getLayout() {
     '    <button tabindex="3" class="update_database_button" id="updateDatabaseButton">Update database</button>' +
     '  </div>' +
     '  <div class="error" id="error"></div>' +
+    '  <a class="back_link" href="/" title="Back to index page">Back to index page</a>' +
     '</div>';
 }
 
@@ -112,7 +109,7 @@ function inputHandler(e) {
       suggestions.map((item, i) => {
         const li = document.createElement('li');
         li.innerText = item;
-        li.addEventListener('click', () => {;selectItem(item)});
+        li.addEventListener('mousedown', () => {selectItem(item)});
         suggestionsWrapper.appendChild(li);
       });
       suggestionsWrapper.style.display = 'block';

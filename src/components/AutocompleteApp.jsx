@@ -93,12 +93,6 @@ export default class AutocompleteApp extends React.Component {
     })
   }
 
-  handleBlur(e) {
-    if (!e.target.parentNode.classList.contains('input_field_wrapper')) {
-      this.hideSuggestions();
-    }
-  }
-
   render () {
     return (
       <div className="container">
@@ -110,7 +104,7 @@ export default class AutocompleteApp extends React.Component {
             onKeyDown={(e) => {this.handleKeyDown(e)}}
             onInput={(e) => {this.handleInput(e)}}
             onFocus={(e) => {this.handleInput(e)}}
-            onBlur={(e) => {this.handleBlur(e)}}
+            onBlur={this.hideSuggestions.bind(this)}
             type="text"
             value={this.state.currentInput}
             placeholder="Start typing"
@@ -132,6 +126,7 @@ export default class AutocompleteApp extends React.Component {
             <Error errorText={this.state.error.message} hideError={this.hideError.bind(this)} />
           : ''
         }
+        <a className="back_link" href="/" title="Back to index page">Back to index page</a>
       </div>
     );
   }

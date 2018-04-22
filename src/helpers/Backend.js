@@ -19,7 +19,7 @@ export default function(db) {
   this.processRequest = function (request) {
     const input = request.body.input;
     return isRequestValid(request) ? {
-      data: database.filter(entry => input && ~entry.indexOf(input)),
+      data: database.filter(entry => input && ~entry.toLowerCase().indexOf(input.toLowerCase())),
       error: null
     } : {
       data: null,

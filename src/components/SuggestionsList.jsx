@@ -10,7 +10,7 @@ SuggestionsList.propTypes = {
 export default function SuggestionsList({suggestions, selectItem, hoverOn}) {
   return (
     <ul className="suggestions_list">
-      {suggestions.map((item, i) => <li className={i === hoverOn ? 'hover' : ''} onClick={(e) => selectItem(i)} key={i}>{item}</li>)}
+      {suggestions.map((item, i) => <li className={i === hoverOn ? 'hover' : ''} onMouseDown={(e) => selectItem(i)} key={i}>{item}</li>)}
     </ul>
   )
 };
